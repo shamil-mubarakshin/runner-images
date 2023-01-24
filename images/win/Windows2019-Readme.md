@@ -51,7 +51,7 @@
 ### Tools
 - 7zip 22.01
 - aria2 1.36.0
-- azcopy 10.16.2 INFO: azcopy.exe: A newer version 10.17.0 is available to download 
+- azcopy 10.16.2
 - Bazel 6.0.0
 - Bazelisk 1.13.2
 - Bicep 0.13.1
