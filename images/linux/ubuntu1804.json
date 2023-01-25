@@ -54,7 +54,7 @@
             "os_type": "Linux",
             "image_publisher": "Canonical",
             "image_offer": "UbuntuServer",
-            "image_sku": "18.04-LTS",
+            "image_sku": "18_04-lts-gen2",
             "os_disk_size_gb": "86"
         }
     ],
