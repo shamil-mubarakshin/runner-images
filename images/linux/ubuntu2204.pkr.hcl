@@ -165,7 +165,7 @@ source "azure-arm" "build_vhd" {
   virtual_network_resource_group_name    = "${var.virtual_network_resource_group_name}"
   virtual_network_subnet_name            = "${var.virtual_network_subnet_name}"
   vm_size                                = "${var.vm_size}"
-  managed_image_name                     = "${var.capture_name_prefix}-Ubuntu2204-gen2-${timestamp()}"
+  managed_image_name                     = "${var.capture_name_prefix}-Ubuntu2204-gen2}"
   managed_image_resource_group_name      = "davidomid-test-gen2-images"
 
   dynamic "azure_tag" {
