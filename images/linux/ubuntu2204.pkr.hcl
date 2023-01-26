@@ -148,8 +148,6 @@ variable "vm_size" {
 source "azure-arm" "build_vhd" {
   allowed_inbound_ip_addresses           = "${var.allowed_inbound_ip_addresses}"
   build_resource_group_name              = "${var.build_resource_group_name}"
-  capture_container_name                 = "images"
-  capture_name_prefix                    = "${var.capture_name_prefix}"
   client_id                              = "${var.client_id}"
   client_secret                          = "${var.client_secret}"
   client_cert_path                       = "${var.client_cert_path}"
@@ -169,6 +167,8 @@ source "azure-arm" "build_vhd" {
   virtual_network_resource_group_name    = "${var.virtual_network_resource_group_name}"
   virtual_network_subnet_name            = "${var.virtual_network_subnet_name}"
   vm_size                                = "${var.vm_size}"
+  managed_image_name                     = "${var.capture_name_prefix}-Ubuntu2204-gen2-${timestamp()}",
+  managed_image_resource_group_name      = "davidomid-test-gen2-images"
 
   dynamic "azure_tag" {
     for_each = var.azure_tag
