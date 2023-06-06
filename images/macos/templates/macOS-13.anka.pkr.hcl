@@ -187,7 +187,7 @@ build {
     ]
   }
   provisioner "file" {
-    destination = "~/.fastlane/spaceship/${var.xcode_install_user}/cookie"
+    destination = "~/.fastlane/spaceship/${var.xcode_install_user}/"
     source = "${var.xcversion_auth_cookie}"
   }
   provisioner "shell" {
