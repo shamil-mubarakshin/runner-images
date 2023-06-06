@@ -11,6 +11,7 @@ if ([string]::IsNullOrEmpty($env:XCODE_INSTALL_USER) -or [string]::IsNullOrEmpty
 }
 
 Write-Host "Getting Cookie"
+Get-ChildItem -Path "~/.fastlane/spaceship"
 Get-Content -Path "~/.fastlane/spaceship/$env:XCODE_INSTALL_USER/cookie"
 
 # Spaceship Apple ID login fails due to Apple ID prompting to be upgraded to 2FA.
