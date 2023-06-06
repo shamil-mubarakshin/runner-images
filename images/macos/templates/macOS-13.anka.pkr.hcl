@@ -36,7 +36,6 @@ variable "github_api_pat" {
 
 variable "xcode_install_user" {
   type = string
-  sensitive = true
 }
 
 variable "xcode_install_password" {
