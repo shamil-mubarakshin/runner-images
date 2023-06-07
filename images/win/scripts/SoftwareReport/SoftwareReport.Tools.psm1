@@ -88,11 +88,9 @@ function Get-GitLFSVersion {
 
 function Get-InnoSetupVersion {
     choco --version
-    choco list innosetup
-    $innoSetupVersion = $(choco list innosetup) | Select-String -Pattern "InnoSetup"
-    $innoSetupVersion
-    $innoSetupVersion -replace "^InnoSetup"
-    return ($innoSetupVersion -replace "^InnoSetup").Trim()
+    choco list --limit-output innosetup
+    $innoSetupVersion = $(choco list --limit-output innosetup).split("|")[1].Trim()
+    return $innoSetupVersion
 }
 
 function Get-JQVersion {
