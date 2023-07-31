@@ -325,7 +325,7 @@
         {
             "type": "shell",
             "expect_disconnect": true,
-            "start_retry_timeout": "15m",
+            "start_retry_timeout": "25m",
             "scripts": [
                 "{{template_dir}}/scripts/base/reboot.sh"
             ],
