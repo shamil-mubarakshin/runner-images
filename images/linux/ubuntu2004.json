@@ -333,7 +333,7 @@
         },
         {
             "type": "shell",
-            "pause_before": "60s",
+            "pause_before": "5m",
             "start_retry_timeout": "10m",
             "scripts": [
                 "{{template_dir}}/scripts/installers/cleanup.sh"
