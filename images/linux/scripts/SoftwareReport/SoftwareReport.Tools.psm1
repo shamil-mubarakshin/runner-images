@@ -69,22 +69,22 @@ function Get-DockerComposeV1Version {
 }
 
 function Get-DockerComposeV2Version {
-    $composeVersion = docker compose version | Take-OutputPart -Part 3 | Take-OutputPart -Part 0 -Delimiter "v"
+    $composeVersion = docker compose version | Take-OutputPart -Part 3
     return $composeVersion
 }
 
-function Get-DockerClientVersion {
+function Get-DockerMobyClientVersion {
     $dockerClientVersion = sudo docker version --format '{{.Client.Version}}'
     return $dockerClientVersion
 }
 
-function Get-DockerServerVersion {
+function Get-DockerMobyServerVersion {
     $dockerServerVersion = sudo docker version --format '{{.Server.Version}}'
     return $dockerServerVersion
 }
 
 function Get-DockerBuildxVersion {
-    $buildxVersion = docker buildx version  | Take-OutputPart -Part 1 | Take-OutputPart -Part 0 -Delimiter "v"
+    $buildxVersion = docker buildx version  | Take-OutputPart -Part 1 | Take-OutputPart -Part 0 -Delimiter "+"
     return $buildxVersion
 }
 
