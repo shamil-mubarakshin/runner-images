@@ -56,6 +56,11 @@ aws_helper_url=$(curl "${authString[@]}" -fsSL $aws_latest_release_url | jq -r '
 download_with_retries "$aws_helper_url" "/usr/bin" docker-credential-ecr-login
 chmod +x /usr/bin/docker-credential-ecr-login
 
+groups
+cat /etc/group
+lslogins -u
+id
+
 invoke_tests "Tools" "Docker"
 if [ "${DOCKERHUB_PULL_IMAGES:-yes}" -eq "yes" ]; then
     invoke_tests "Tools" "Docker images"
