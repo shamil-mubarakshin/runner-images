@@ -64,6 +64,13 @@ chmod +x /usr/bin/docker-credential-ecr-login
 rm $gpg_key
 rm $repo_path
 
+# Listing all IDs
+echo "listing groups, users, etc"
+groups
+cat /etc/group
+lslogins -u
+id
+
 invoke_tests "Tools" "Docker"
 if [ "${DOCKERHUB_PULL_IMAGES:-yes}" -eq "yes" ]; then
     invoke_tests "Tools" "Docker images"
