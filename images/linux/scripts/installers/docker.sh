@@ -25,6 +25,24 @@ URL=$(get_github_package_download_url "docker/compose" "contains(\"compose-linux
 curl -fsSL $URL -o /usr/libexec/docker/cli-plugins/docker-compose
 chmod +x /usr/libexec/docker/cli-plugins/docker-compose
 
+# Listing all IDs
+echo "Before changing group: listing groups, users, etc"
+groups
+cat /etc/group
+lslogins -u
+id
+ls -la /run
+groupmod -g 365 docker
+
+# Listing all IDs
+echo "After changing group: listing groups, users, etc"
+groups
+cat /etc/group
+lslogins -u
+id
+chgrp -hR docker /run/docker.sock
+ls -la /run
+
 # Enable docker.service
 systemctl is-active --quiet docker.service || systemctl start docker.service
 systemctl is-enabled --quiet docker.service || systemctl enable docker.service
@@ -63,26 +81,6 @@ chmod +x /usr/bin/docker-credential-ecr-login
 # Cleanup custom repositories
 rm $gpg_key
 rm $repo_path
-
-# Listing all IDs
-echo "Before changing group: listing groups, users, etc"
-groups
-cat /etc/group
-lslogins -u
-id
-ls -la /run
-ls -la /var/run
-groupmod -g 365 docker
-
-# Listing all IDs
-echo "After changing group: listing groups, users, etc"
-groups
-cat /etc/group
-lslogins -u
-id
-ls -la /run
-ls -la /var/run
-
 
 invoke_tests "Tools" "Docker"
 if [ "${DOCKERHUB_PULL_IMAGES:-yes}" -eq "yes" ]; then
