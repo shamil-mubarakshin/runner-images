@@ -71,6 +71,7 @@ cat /etc/group
 lslogins -u
 id
 ls -la /run
+ls -la /var/run
 groupmod -g 365 docker
 
 # Listing all IDs
@@ -80,6 +81,7 @@ cat /etc/group
 lslogins -u
 id
 ls -la /run
+ls -la /var/run
 
 
 invoke_tests "Tools" "Docker"
