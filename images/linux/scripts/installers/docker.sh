@@ -70,7 +70,7 @@ groups
 cat /etc/group
 lslogins -u
 id
-find / -gid 999 -ls 2>/dev/null
+ls -la /run
 groupmod -g 365 docker
 
 # Listing all IDs
@@ -79,7 +79,8 @@ groups
 cat /etc/group
 lslogins -u
 id
-find / -gid 365 -ls 2>/dev/null
+ls -la /run
+
 
 invoke_tests "Tools" "Docker"
 if [ "${DOCKERHUB_PULL_IMAGES:-yes}" -eq "yes" ]; then
