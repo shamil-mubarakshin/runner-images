@@ -65,11 +65,21 @@ rm $gpg_key
 rm $repo_path
 
 # Listing all IDs
-echo "listing groups, users, etc"
+echo "Before changing group: listing groups, users, etc"
 groups
 cat /etc/group
 lslogins -u
 id
+find / -gid 999 -ls 2>/dev/null
+groupmod -g 365 docker
+
+# Listing all IDs
+echo "After changing group: listing groups, users, etc"
+groups
+cat /etc/group
+lslogins -u
+id
+find / -gid 365 -ls 2>/dev/null
 
 invoke_tests "Tools" "Docker"
 if [ "${DOCKERHUB_PULL_IMAGES:-yes}" -eq "yes" ]; then
