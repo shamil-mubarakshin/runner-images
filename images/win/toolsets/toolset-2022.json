@@ -154,7 +154,7 @@
         }
     },
     "mingw": {
-        "version": "12.2.0",
+        "version": "13.2.0",
         "runtime": "ucrt"
     },
     "MsysPackages": {
