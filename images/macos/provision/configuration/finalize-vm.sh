@@ -11,6 +11,12 @@ if is_Monterey; then
     brew uninstall parallels
 fi
 
+# https://github.com/actions/runner-images/issues/8738
+if is_BigSur; then
+    (brew list ghc > /dev/null 2>&1) && brew unlink ghc
+    (brew list cabal-install > /dev/null 2>&1) && brew unlink cabal-install
+fi
+
 # Put documentation to $HOME root
 cp $HOME/image-generation/output/software-report/systeminfo.* $HOME/
 
