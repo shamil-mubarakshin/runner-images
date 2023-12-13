@@ -26,6 +26,12 @@ variable "build_resource_group_name" {
   default = "${env("BUILD_RESOURCE_GROUP_NAME")}"
 }
 
+variable "client_cert_password" {
+  type      = string
+  default   = "${env("ARM_CLIENT_CERT_PASSWORD")}"
+  sensitive = true
+}
+
 variable "client_cert_path" {
   type    = string
   default = "${env("ARM_CLIENT_CERT_PATH")}"
@@ -146,6 +152,7 @@ variable "vm_size" {
 source "azure-arm" "build_image" {
   allowed_inbound_ip_addresses           = "${var.allowed_inbound_ip_addresses}"
   build_resource_group_name              = "${var.build_resource_group_name}"
+  client_cert_password                   = "${var.client_cert_password}"
   client_cert_path                       = "${var.client_cert_path}"
   client_id                              = "${var.client_id}"
   client_secret                          = "${var.client_secret}"

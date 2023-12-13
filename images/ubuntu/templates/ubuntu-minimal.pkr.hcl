@@ -35,6 +35,12 @@ variable "build_resource_group_name" {
   default = "${env("BUILD_RESOURCE_GROUP_NAME")}"
 }
 
+variable "client_cert_password" {
+  type      = string
+  default   = "${env("ARM_CLIENT_CERT_PASSWORD")}"
+  sensitive = true
+}
+
 variable "client_cert_path" {
   type    = string
   default = "${env("ARM_CLIENT_CERT_PATH")}"
@@ -121,11 +127,12 @@ source "azure-arm" "build_image" {
   location = "${var.location}"
 
   // Auth
-  tenant_id        = "${var.tenant_id}"
-  subscription_id  = "${var.subscription_id}"
-  client_id        = "${var.client_id}"
-  client_secret    = "${var.client_secret}"
-  client_cert_path = "${var.client_cert_path}"
+  tenant_id            = "${var.tenant_id}"
+  subscription_id      = "${var.subscription_id}"
+  client_id            = "${var.client_id}"
+  client_secret        = "${var.client_secret}"
+  client_cert_path     = "${var.client_cert_path}"
+  client_cert_password = "${var.client_cert_password}"
 
   // Base image
   image_offer     = "0001-com-ubuntu-server-jammy"
