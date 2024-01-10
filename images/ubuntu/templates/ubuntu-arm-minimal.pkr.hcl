@@ -117,6 +117,26 @@ variable "vm_size" {
   default = "Standard_D2pds_v5"
 }
 
+variable "gallery_rg" {
+  type    = string
+  default = ""
+}
+
+variable "gallery_name" {
+  type    = string
+  default = ""
+}
+
+variable "gallery_definition" {
+  type    = string
+  default = ""
+}
+
+variable "gallery_image_version" {
+  type    = string
+  default = ""
+}
+
 source "azure-arm" "build_image" {
   location = "${var.location}"
 
@@ -133,8 +153,15 @@ source "azure-arm" "build_image" {
   image_sku       = "22_04-lts-arm64"
 
   // Target location
-  managed_image_name = "${local.managed_image_name}"
-  managed_image_resource_group_name = "${var.managed_image_resource_group_name}"
+  // managed_image_name = "${local.managed_image_name}"
+  // managed_image_resource_group_name = "${var.managed_image_resource_group_name}"
+  shared_image_gallery_destination {
+    resource_group       = "${var.gallery_rg}"
+    gallery_name         = "${var.gallery_name}"
+    image_name           = "${var.gallery_definition}"
+    image_version        = "${var.gallery_image_version}"
+    storage_account_type = "Standard_LRS"
+  }
 
   // Resource group for VM
   build_resource_group_name = "${var.build_resource_group_name}"

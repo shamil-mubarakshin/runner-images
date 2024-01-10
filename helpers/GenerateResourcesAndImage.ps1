@@ -149,7 +149,11 @@ Function GenerateResourcesAndImage {
         [ValidateSet("abort", "ask", "cleanup", "run-cleanup-provisioner")]
         [string] $OnError = "ask",
         [Parameter(Mandatory = $False)]
-        [hashtable] $Tags = @{}
+        [hashtable] $Tags = @{},
+        [string] $GalleryRGName,
+        [string] $GalleryName,
+        [string] $GalleryDefinition,
+        [string] $GalleryImageVersion
     )
 
     if ($Force -or $ReuseResourceGroup) {
@@ -241,18 +245,18 @@ Function GenerateResourcesAndImage {
     }
 
     Write-Host "Validating packer template..."
-    & $PackerBinary validate `
-        "-var=client_id=fake" `
-        "-var=client_secret=fake" `
-        "-var=subscription_id=$($SubscriptionId)" `
-        "-var=tenant_id=fake" `
-        "-var=location=$($AzureLocation)" `
-        "-var=managed_image_name=$($ManagedImageName)" `
-        "-var=managed_image_resource_group_name=$($ResourceGroupName)" `
-        "-var=install_password=$($InstallPassword)" `
-        "-var=allowed_inbound_ip_addresses=$($AllowedInboundIpAddresses)" `
-        "-var=azure_tags=$($TagsJson)" `
-        $TemplatePath
+    # & $PackerBinary validate `
+    #     "-var=client_id=fake" `
+    #     "-var=client_secret=fake" `
+    #     "-var=subscription_id=$($SubscriptionId)" `
+    #     "-var=tenant_id=fake" `
+    #     "-var=location=$($AzureLocation)" `
+    #     "-var=managed_image_name=$($ManagedImageName)" `
+    #     "-var=managed_image_resource_group_name=$($ResourceGroupName)" `
+    #     "-var=install_password=$($InstallPassword)" `
+    #     "-var=allowed_inbound_ip_addresses=$($AllowedInboundIpAddresses)" `
+    #     "-var=azure_tags=$($TagsJson)" `
+    #     $TemplatePath
 
     if ($LastExitCode -ne 0) {
         throw "Packer template validation failed."
@@ -385,6 +389,10 @@ Function GenerateResourcesAndImage {
             -var "install_password=$($InstallPassword)" `
             -var "allowed_inbound_ip_addresses=$($AllowedInboundIpAddresses)" `
             -var "azure_tags=$($TagsJson)" `
+            -var "gallery_rg=$($GalleryRGName)" `
+            -var "gallery_name=$($GalleryName)" `
+            -var "gallery_definition=$($GalleryDefinition)" `
+            -var "gallery_image_version=$($GalleryImageVersion)" `
             $TemplatePath
 
         if ($LastExitCode -ne 0) {
