@@ -6,6 +6,7 @@ enum ImageType {
     Ubuntu2004    = 3
     Ubuntu2204    = 4
     UbuntuMinimal = 5
+    UbuntuArmMinimal = 6
 }
 
 Function Get-PackerTemplatePath {
@@ -32,6 +33,9 @@ Function Get-PackerTemplatePath {
         }
         ([ImageType]::UbuntuMinimal) {
             $relativeTemplatePath = Join-Path (Join-Path "ubuntu" "templates") "ubuntu-minimal.pkr.hcl"
+        }
+        ([ImageType]::UbuntuArmMinimal) {
+            $relativeTemplatePath = Join-Path (Join-Path "ubuntu" "templates") "ubuntu-arm-minimal.pkr.hcl"
         }
         default { throw "Unknown type of image" }
     }
@@ -77,7 +81,7 @@ Function GenerateResourcesAndImage {
         .PARAMETER ResourceGroupName
             The name of the resource group to create the Azure resources in.
         .PARAMETER ImageType
-            The type of image to generate. Valid values are: Windows2019, Windows2022, Ubuntu2004, Ubuntu2204, UbuntuMinimal.
+            The type of image to generate. Valid values are: Windows2019, Windows2022, Ubuntu2004, Ubuntu2204, UbuntuMinimal, UbuntuArmMinimal.
         .PARAMETER ManagedImageName
             The name of the managed image to create. The default is "Runner-Image-{{ImageType}}".
         .PARAMETER AzureLocation
