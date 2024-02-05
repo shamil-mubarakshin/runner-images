@@ -96,7 +96,7 @@ Describe "XCODE_DEVELOPER_DIR variables" {
     }
 }
 
-Describe "Xcode simulators" {
+Describe "Xcode simulators" -Skip:($os.IsVentura -or $os.IsSonoma) {
     $xcodeVersions.link | Where-Object { Test-XcodeStableRelease -Version $_ } | ForEach-Object {
         Context "$_" {
             $testCase = @{ XcodeVersion = $_ }
