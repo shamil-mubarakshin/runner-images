@@ -16,9 +16,9 @@ if (Test-IsWin19) {
     $wdkExtensionPath = "C:\Program Files (x86)\Windows Kits\10\Vsix\VS2019\WDK.vsix"
 } elseif (Test-IsWin22) {
     # SDK is available through Visual Studio
-    $wdkUrl = "https://go.microsoft.com/fwlink/?linkid=2249371"
-    $wdkSignatureThumbprint = "7C94971221A799907BB45665663BBFD587BAC9F8"
-    $wdkExtensionPath = "C:\Program Files (x86)\Windows Kits\10\Vsix\VS2022\*\WDK.vsix"
+    $wdkUrl = "https://go.microsoft.com/fwlink/?linkid=2272234"
+    $wdkSignatureThumbprint = "CB9C4FBEA1D87D2D468AC5A9CAAB0163F6AD8401"
+    $wdkExtensionPath = "C:\Program Files (x86)\Windows Kits\10\Vsix\VS2022\*\amd64\WDK.vsix"
 } else {
     throw "Invalid version of Visual Studio is found. Either 2019 or 2022 are required"
 }
