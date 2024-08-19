@@ -36,25 +36,25 @@ function Get-VisualStudioExtensions {
         }
     }
 
-    # SDK
-    $sdkVersion = Get-SDKVersion
-    $sdkPackages = @(
-        @{Package = 'Windows Software Development Kit'; Version = $sdkVersion }
-    )
+    # # SDK
+    # $sdkVersion = Get-SDKVersion
+    # $sdkPackages = @(
+    #     @{Package = 'Windows Software Development Kit'; Version = $sdkVersion }
+    # )
 
-    # WDK
-    $wdkVersion = Get-WDKVersion
-    $wdkExtensionVersion = Get-VSExtensionVersion -packageName 'Microsoft.Windows.DriverKit'
-    $wdkPackages = @(
-        @{Package = 'Windows Driver Kit'; Version = $wdkVersion }
-        @{Package = 'Windows Driver Kit Visual Studio Extension'; Version = $wdkExtensionVersion }
-    )
+    # # WDK
+    # $wdkVersion = Get-WDKVersion
+    # $wdkExtensionVersion = Get-VSExtensionVersion -packageName 'Microsoft.Windows.DriverKit'
+    # $wdkPackages = @(
+    #     @{Package = 'Windows Driver Kit'; Version = $wdkVersion }
+    #     @{Package = 'Windows Driver Kit Visual Studio Extension'; Version = $wdkExtensionVersion }
+    # )
 
     $extensions = @(
         $vsixs
         $ssdtPackages
-        $sdkPackages
-        $wdkPackages
+        # $sdkPackages
+        # $wdkPackages
     )
 
     $extensions | Foreach-Object {
