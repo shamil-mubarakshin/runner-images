@@ -32,7 +32,7 @@ Function Install-VisualStudio {
         [Parameter(Mandatory)] [String] $SignatureThumbprint
     )
 
-    $bootstrapperUrl = "https://download.visualstudio.microsoft.com/download/pr/11917f82-1030-4dda-a768-f0da3c4623a9/3849cfd3f628b41de5f72bd9f360fb9923d5ad5e803f0295fc7f5d361b8d1ab9/vs_Enterprise.exe"
+    $bootstrapperUrl = "https://download.visualstudio.microsoft.com/download/pr/28626b4b-f88f-4b55-a0cf-f3eaa2c643fb/081645f0c3b041f50ad4e70977f30d6c23160699a6e95f54aab53797c2c3ea4a/vs_Enterprise.exe"
     $channelUri = "https://aka.ms/vs/${Version}/${Channel}/channel"
     $channelId = "VisualStudio.${Version}.Release"
     $productId = "Microsoft.VisualStudio.Product.${Edition}"
