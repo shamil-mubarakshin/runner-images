@@ -66,6 +66,13 @@ Describe "Windows Updates" {
         "$env:windir\WindowsUpdateDone.txt" | Should -Exist
     }
 
+    $filter = @{
+        LogName      = "System"
+        Id           = 19, 20, 43
+        ProviderName = "Microsoft-Windows-WindowsUpdateClient"
+    }
+    Get-WinEvent -FilterHashtable $filter -ErrorAction SilentlyContinue | Format-List TimeCreated, Id, Message
+
     $testCases = Get-WindowsUpdateStates | Sort-Object Title | ForEach-Object {
         @{
             Title = $_.Title

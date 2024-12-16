@@ -36,3 +36,10 @@ Install-WindowsUpdates
 
 # Create complete windows update file
 New-Item -Path $env:windir -Name WindowsUpdateDone.txt -ItemType File | Out-Null
+
+$filter = @{
+    LogName      = "System"
+    Id           = 19, 20, 43
+    ProviderName = "Microsoft-Windows-WindowsUpdateClient"
+}
+Get-WinEvent -FilterHashtable $filter -ErrorAction SilentlyContinue | Format-List TimeCreated, Id, Message
