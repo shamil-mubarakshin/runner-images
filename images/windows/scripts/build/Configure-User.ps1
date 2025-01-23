@@ -8,9 +8,15 @@
 #       https://github.com/actions/runner-images/issues/5301#issuecomment-1648292990
 #
 
-Write-Host "Warmup 'devenv.exe /updateconfiguration'"
+Write-Host "Warmup devenv.exe"
 $vsInstallRoot = (Get-VisualStudioInstance).InstallationPath
-cmd.exe /c "`"$vsInstallRoot\Common7\IDE\devenv.exe`" /updateconfiguration"
+$devEnvPath = "$vsInstallRoot\Common7\IDE\devenv.exe"
+# Initialize Visual Studio Experimental Instance
+# The Out-Null cmdlet is required to ensure PowerShell waits until the '/ResetSettings' command fully completes.
+& "$devEnvPath" /RootSuffix Exp /ResetSettings General.vssettings /Command File.Exit | Out-Null
+cmd.exe /c "`"$devEnvPath`" /updateconfiguration"
+$warmup_vdproj = $(Join-Path "C:\post-generation" "warmup.vdproj")
+& "$devEnvPath" $warmup_vdproj /build Release | Out-Null
 if ($LASTEXITCODE -ne 0) {
     throw "Failed to warmup 'devenv.exe /updateconfiguration'"
 }
