@@ -429,7 +429,7 @@ provisioner "powershell" {
   }
 
   provisioner "powershell" {
-    environment_vars = ["INSTALL_USER=${var.install_user}"]
+    environment_vars = ["INSTALL_USER=${var.install_user}", "TEMP_DIR=${var.temp_dir}"]
     scripts          = [
       "${path.root}/../scripts/build/Install-NativeImages.ps1",
       "${path.root}/../scripts/build/Configure-System.ps1",
