@@ -12,3 +12,10 @@ Describe "Apparmor is disabled" {
         systemctl is-active apparmor | Should -Be "inactive"
     }
 }
+
+Describe "unprivileged_userns_restriction is disabled" {
+    It "kernel.apparmor_restrict_unprivileged_userns == 0" {
+        $value = Get-Content /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+        $value | Should -Be 0
+    }
+}

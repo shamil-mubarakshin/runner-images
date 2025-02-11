@@ -73,3 +73,9 @@ fi
 # Disable apparmor
 systemctl is-active --quiet apparmor.service && systemctl stop apparmor.service
 systemctl disable apparmor.service
+
+# Disable unprivileged_userns_restriction on Ubuntu 24.04
+# https://gitlab.com/apparmor/apparmor/-/wikis/unprivileged_userns_restriction#ubuntu-2404
+if is_ubuntu24; then
+    echo 'kernel.apparmor_restrict_unprivileged_userns=0' > /etc/sysctl.d/60-apparmor-namespace.conf
+fi
