@@ -9,7 +9,7 @@ $kotlinVersion = (Get-ToolsetContent).kotlin.version
 
 $kotlinDownloadUrl = Resolve-GithubReleaseAssetUrl `
     -Repo "JetBrains/kotlin" `
-    -Version "$kotlinVersion" `
+    -Version "2.1.10" `
     -Asset "kotlin-compiler-*.zip"
 $kotlinArchivePath = Invoke-DownloadWithRetry $kotlinDownloadUrl
 
