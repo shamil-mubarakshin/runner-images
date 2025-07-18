@@ -2,10 +2,14 @@
 |-|
 | [[Windows & Ubuntu] .NET 6 will be removed from the images on  2025-08-01.](https://github.com/actions/runner-images/issues/12241) |
 ***
+| Announcements |
+|-|
+| [[Windows & Ubuntu] .NET 6 will be removed from the images on  2025-08-01.](https://github.com/actions/runner-images/issues/12241) |
+***
 # Ubuntu 22.04
 - OS Version: 22.04.5 LTS
 - Kernel Version: 6.8.0-1030-azure
-- Image Version: 20250713.1.0
+- Image Version: 20250710.1.0
 - Systemd version: 249.11-0ubuntu3.16
 
 ## Installed Software
@@ -18,7 +22,7 @@
 - Dash 0.5.11+git20210903+057cd650a4ed-3build1
 - GNU C++: 10.5.0, 11.4.0, 12.3.0
 - GNU Fortran: 10.5.0, 11.4.0, 12.3.0
-- Julia 1.11.6
+- Julia 1.11.5
 - Kotlin 2.1.10-release-473
 - Mono 6.12.0.200
 - MSBuild 16.10.1.31701 (Mono 6.12.0.200)
@@ -39,7 +43,7 @@
 - Pip3 22.0.2
 - Pipx 1.7.1
 - RubyGems 3.3.5
-- Vcpkg (build from commit 09b8d93e61)
+- Vcpkg (build from commit cd6256cd37)
 - Yarn 1.22.22
 
 #### Environment variables
@@ -108,7 +112,7 @@ to accomplish this.
 - yamllint 1.37.1
 - yq 4.46.1
 - zstd 1.5.7
-- Ninja 1.13.1
+- Ninja 1.13.0
 
 ### CLI Tools
 - Alibaba Cloud CLI 3.0.289
@@ -122,7 +126,7 @@ to accomplish this.
 - Netlify CLI 22.2.2
 - OpenShift CLI 4.19.3
 - ORAS CLI 1.2.3
-- Vercel CLI 44.4.1
+- Vercel CLI 44.3.0
 
 ### Java
 | Version             | Environment Variable |
@@ -134,7 +138,7 @@ to accomplish this.
 
 ### PHP Tools
 - PHP: 8.1.2
-- Composer 2.8.10
+- Composer 2.8.9
 - PHPUnit 8.5.42
 ```
 Both Xdebug and PCOV extensions are installed, but only Xdebug is enabled.
@@ -164,8 +168,8 @@ Both Xdebug and PCOV extensions are installed, but only Xdebug is enabled.
 - Google Chrome 138.0.7204.100
 - ChromeDriver 138.0.7204.94
 - Chromium 138.0.7204.0
-- Microsoft Edge 138.0.3351.83
-- Microsoft Edge WebDriver 138.0.3351.83
+- Microsoft Edge 138.0.3351.77
+- Microsoft Edge WebDriver 138.0.3351.77
 - Selenium server 4.34.0
 - Mozilla Firefox 140.0.4
 - Geckodriver 0.36.0
@@ -194,7 +198,7 @@ Use the following command as a part of your job to start the service: 'sudo syst
 ```
 
 #### MySQL
-- MySQL 8.0.42-0ubuntu0.22.04.2
+- MySQL 8.0.42-0ubuntu0.22.04.1
 ```
 User: root
 Password: root
@@ -210,8 +214,8 @@ Use the following command as a part of your job to start the service: 'sudo syst
 
 #### Go
 - 1.22.12
-- 1.23.11
-- 1.24.5
+- 1.23.10
+- 1.24.4
 
 #### Node.js
 - 18.20.8
@@ -388,4 +392,5 @@ Use the following command as a part of your job to start the service: 'sudo syst
 | xz-utils               | 5.2.5-2ubuntu1                      |
 | zip                    | 3.0-12build2                        |
 | zsync                  | 0.6.2-3ubuntu1                      |
+
 
