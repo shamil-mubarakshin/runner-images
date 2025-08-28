@@ -205,12 +205,12 @@ build {
   provisioner "shell" {
     execute_command   = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
     expect_disconnect = true
-    inline            = ["echo 'Reboot VM'", "df -h", "sudo reboot"]
+    inline            = ["echo 'Reboot VM'", "df -h", "free -h", "vmstat", "who -b", "sudo reboot"]
   }
 
   provisioner "shell" {
     execute_command     = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
-    pause_before        = "2m0s"
+    pause_before        = "5m0s"
     scripts             = ["${path.root}/../scripts/build/cleanup.sh"]
     start_retry_timeout = "10m"
   }
