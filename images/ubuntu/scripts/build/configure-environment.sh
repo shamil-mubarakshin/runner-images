@@ -15,9 +15,9 @@ set_etc_environment_variable "ImageOS" "${IMAGE_OS}"
 # Set the ACCEPT_EULA variable to Y value to confirm your acceptance of the End-User Licensing Agreement
 set_etc_environment_variable "ACCEPT_EULA" "Y"
 
-# This directory is supposed to be created in $HOME and owned by user(https://github.com/actions/runner-images/issues/491)
+# This directory is supposed to be created in $HOME and owned by user
+# https://github.com/actions/runner-images/issues/491
 mkdir -p /etc/skel/.config/configstore
-set_etc_environment_variable "XDG_CONFIG_HOME" '$HOME/.config'
 
 # Change waagent entries to use /mnt for swap file
 sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g' /etc/waagent.conf
