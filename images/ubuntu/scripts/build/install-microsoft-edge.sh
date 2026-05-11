@@ -12,6 +12,12 @@ REPO_URL="https://packages.microsoft.com/repos/edge"
 GPG_KEY="/usr/share/keyrings/microsoft-edge.gpg"
 REPO_PATH="/etc/apt/sources.list.d/microsoft-edge.list"
 
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 1 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
+
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $GPG_KEY
 # Specify an arch as Microsoft repository supports armhf and arm64 as well
 echo "deb [arch=amd64 signed-by=$GPG_KEY] $REPO_URL stable main" > $REPO_PATH
@@ -19,9 +25,21 @@ echo "deb [arch=amd64 signed-by=$GPG_KEY] $REPO_URL stable main" > $REPO_PATH
 apt-get update
 apt-get install --no-install-recommends microsoft-edge-stable
 
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 2 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
+
 rm $GPG_KEY
 rm $REPO_PATH
 rm /etc/cron.daily/microsoft-edge
+
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 3 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
 
 echo "microsoft-edge $REPO_URL" >> $HELPER_SCRIPTS/apt-sources.txt
 
@@ -47,5 +65,11 @@ chmod +x $edgedriver_bin
 ln -s $edgedriver_bin /usr/bin
 
 set_etc_environment_variable "EDGEWEBDRIVER" "${EDGEDRIVER_DIR}"
+
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 4 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
 
 invoke_tests "Browsers" "Edge"

@@ -10,10 +10,22 @@ source $HELPER_SCRIPTS/etc-environment.sh
 
 FIREFOX_REPO="ppa:mozillateam/ppa"
 
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 1 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
+
 # Install Firefox
 add-apt-repository $FIREFOX_REPO -y
 apt-get update
 apt-get install --target-release 'o=LP-PPA-mozillateam' -y firefox
+
+# DEBUG: edge repo persistence
+echo "=== Check edge repo persistence 2 ==="
+ls -la /etc/apt/sources.list.d
+echo "============"
+ls -la /etc/cron.daily
 
 # Remove source repo's
 add-apt-repository --remove $FIREFOX_REPO
