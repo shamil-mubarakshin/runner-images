@@ -21,6 +21,7 @@ apt-get install --no-install-recommends microsoft-edge-stable
 
 rm $GPG_KEY
 rm $REPO_PATH
+rm /etc/cron.daily/microsoft-edge
 
 echo "microsoft-edge $REPO_URL" >> $HELPER_SCRIPTS/apt-sources.txt
 
